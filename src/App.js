@@ -3,17 +3,23 @@ import './App.css';
 import {useEffect} from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
+
+const URL = "https://test1.unlike.kr";
+
+const Axios = axios.create({
+    withCredentials : true,
+})
+
 function App() {
 
   const check = async () => {
-    const axiosResponse = await axios.get("http://ec2-3-38-108-235.ap-northeast-2.compute.amazonaws.com/check",{
-      withCredentials : true
+    const axiosResponse = await Axios.get(`${URL}/check`,{
     });
     return axiosResponse;
   }
 
   const login = async  () => {
-      const axiosResponse = await axios.get("http://ec2-3-38-108-235.ap-northeast-2.compute.amazonaws.com/login",{
+      const axiosResponse = await Axios.post(`${URL}/login`,{
           withCredentials : true
       });
       return axiosResponse;
@@ -37,9 +43,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
       <div>
         <button onClick={login}>HTTPONLY 쿠키추가</button>
         <button onClick={onClick}>전송</button>
