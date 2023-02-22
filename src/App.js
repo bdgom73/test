@@ -8,19 +8,21 @@ const URL = "https://test1.unlike.kr";
 
 const Axios = axios.create({
     withCredentials : true,
+    baseURL : URL
 })
 
 function App() {
 
   const check = async () => {
-    const axiosResponse = await Axios.get(`${URL}/check`,{
+    const axiosResponse = await Axios.get(`/check`, {
+        withCredentials : true,
     });
     return axiosResponse;
   }
 
   const login = async  () => {
-      const axiosResponse = await Axios.post(`${URL}/login`,{
-          withCredentials : true
+      const axiosResponse = await Axios.post(`/login`, {
+          withCredentials : true,
       });
       return axiosResponse;
   }
