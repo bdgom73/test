@@ -8,7 +8,10 @@ const URL = "https://test1.unlike.kr";
 
 const Axios = axios.create({
     withCredentials : true,
-    baseURL : URL
+    baseURL : URL,
+    headers : {
+        'Access-Control-Allow-Origin': 'https://test1.unlike.kr'
+    }
 })
 
 function App() {
@@ -36,7 +39,6 @@ function App() {
         {
           path : "/",
           expires,
-          httpOnly : true
         }
     )
   }
